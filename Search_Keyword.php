@@ -2,14 +2,14 @@
 
 include "Connect.php";
 
-$keywordfromform = $_GET["keyword"];
-echo $keywordfromform;
+$keywordfromform = $_GET["keyword_FName"];
+echo $keywordfromform_FNAME;
 
 
-//Search database for 88
+//Search database for Name from user input
 echo "<h2> Show all IDs with </h2>";
 
-$sql = "SELECT * FROM Student_Interface WHERE First_Name LIKE '%".$keywordfromform."%' ";
+$sql = "SELECT * FROM Student_Interface WHERE First_Name LIKE '%".$keywordfromform_FName."%' ";
 
 
 $result = $mysqli->query($sql);

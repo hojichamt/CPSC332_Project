@@ -12,13 +12,23 @@
 include "Connect.php";
 
 
+include "Search_Keyword_Course_Num.php";
 
-
-//include "Search_Keyword.php";
+include "Search_Keyword.php";
 ?>
 <form action="Search_Keyword.php">
   <label for="fname">Please Enter Name:</label><br>
-  <input type="text" id="keyword" name="keyword" ><br>
+  <input type="text" id="keyword" name="keyword_FName" ><br>
+  <input type="submit" value="Submit">
+</form>
+
+<body> 
+  <h2> Search For Grades </h2>
+ </body>
+
+<form action="Search_Keyword_Course_Num.php">
+  <label for="fname">Please Enter Course Number:</label><br>
+  <input type="text" id="keyword" name="keyword_Course_Num" ><br>
   <input type="submit" value="Submit">
 </form>
 <?php
