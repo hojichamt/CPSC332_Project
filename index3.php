@@ -52,10 +52,10 @@ include "Connect.php";
 
 <!-- Search input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="keyword_Course_Num">Search</label>
+  <label class="col-md-4 control-label" for="keyword_Prof_SSN">Search</label>
   <div class="col-md-5">
-    <input id="keyword_Prof_Name" name="keyword_Prof_Name" type="search" placeholder="e.g. Isaac" class="form-control input-md">
-    <p class="help-block">Press search to see all Courses.</p>
+    <input id="keyword_Prof_SSN" name="keyword_Prof_SSN" type="search" placeholder="e.g. 000000000 - 9 DIGIT SSNc" class="form-control input-md">
+    <p class="help-block">Press search to see all Professors.</p>
   </div>
 </div>
 
