@@ -1,5 +1,5 @@
 <?php
-//If there are any vaslues in the table, display them one at a time
+//If there are any values in the table, display them one at a time
 $sql = "SELECT * FROM Student_Interface";
 $result = $mysqli->query($sql);
 

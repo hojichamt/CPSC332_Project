@@ -41,18 +41,21 @@ include "Connect.php";
 
 
 ?>
-<form class="form-horizontal" action = "Search_Keyword.php"  >
+<form class="form-horizontal" action = "Search_Keyword_Professors.php"  >
 <fieldset>
 
-<!-- Student Search -->
-<legend>Search For Student</legend>
+<!-- Course Search -->
+<legend>Search For Professor</legend>
+
+<form class="form-horizontal" action = "Search_Keyword_Professor.php">
+<fieldset>
 
 <!-- Search input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="keyword_Course_Num">Search</label>
   <div class="col-md-5">
-    <input id="keyword_FName" name="keyword_FName" type="search" placeholder="e.g. Luis" class="form-control input-md">
-    <p class="help-block">Press search to see all Students.</p>
+    <input id="keyword_Prof_Name" name="keyword_Prof_Name" type="search" placeholder="e.g. Isaac" class="form-control input-md">
+    <p class="help-block">Press search to see all Courses.</p>
   </div>
 </div>
 
