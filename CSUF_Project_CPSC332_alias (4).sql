@@ -32,7 +32,7 @@ CREATE TABLE `Course` (
   `Course_Title` text NOT NULL,
   `Textbook` text NOT NULL,
   `Units` int(1) NOT NULL,
-  `Depart_Num` int(10) DEFAULT NULL
+  `Depart_Num` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -150,7 +150,7 @@ INSERT INTO `Prereqs` (`Prereq_Course`, `Course_Num`) VALUES
 --
 
 CREATE TABLE `Professor_Interface` (
-  `Prof_SSN` int(8) NOT NULL,
+  `Prof_SSN` int(9) NOT NULL,
   `Prof_Name` text NOT NULL,
   `Street_Address` text NOT NULL,
   `City` text NOT NULL,
@@ -167,9 +167,9 @@ CREATE TABLE `Professor_Interface` (
 -- Dumping data for table `Professor_Interface`
 --
 
-INSERT INTO `Professor_Interface` (`Prof_SSN`, `Prof_Name`, `Street_Address`, `City`, `State`, `Zip_Code`, `Area_Code`, `7_digit_num`, `Sex`, `Title``Salary`) VALUES
+INSERT INTO `Professor_Interface` (`Prof_SSN`, `Prof_Name`, `Street_Address`, `City`, `State`, `Zip_Code`, `Area_Code`, `7_digit_num`, `Sex`, `Title`, `Salary`) VALUES
 (331443245, 'Galileo', '1564 Pisa Ln', 'Los Angeles', 'CA', 90082, 626, 2003425, 'M', 'Dr.', 81642),
-(832871234, 'Isaac','3484 Woolsthorpe Manor Blvd', 'Anaheim', 'CA', 562, 2912077, 92831, 'M', 'Dr.', 311727),
+(832871234, 'Isaac','3484 Woolsthorpe Manor Blvd', 'Anaheim', 'CA', 92831, 562, 2912077, 'M', 'Dr.', 311727),
 (889983245, 'Ella', '1917 Beverly Blvd', 'Beverly Hills', 'CA', 93823, 626, 3782902, 'F', 'Mrs.', 151996);
 
 -- --------------------------------------------------------
@@ -180,7 +180,7 @@ INSERT INTO `Professor_Interface` (`Prof_SSN`, `Prof_Name`, `Street_Address`, `C
 
 CREATE TABLE `College_Degree` (
   `Degree` text NOT NULL,
-  `Prof_SSN` int(9) NOT NULL,
+  `Prof_SSN` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -190,7 +190,7 @@ CREATE TABLE `College_Degree` (
 INSERT INTO `College_Degree` (`Degree`, `Prof_SSN`) VALUES
 ('Physics', 331443245),
 ('Mathematics', 832871234),
-('Music', 889983245),
+('Music', 889983245);
 
 -- --------------------------------------------------------
 
@@ -285,7 +285,7 @@ INSERT INTO `Minor` (`Minor_Dept`, `Student_CWID`) VALUES
 -- Indexes for table `Course`
 --
 ALTER TABLE `Course`
-  ADD PRIMARY KEY (`Course_Num`),
+  ADD PRIMARY KEY (`Course_Num`, `Depart_Num`),
   ADD KEY `Course_Department_Num_Foreign` (`Depart_Num`);
 
 --
@@ -299,7 +299,7 @@ ALTER TABLE `Department`
 -- Indexes for table `Enrollment_Records`
 --
 ALTER TABLE `Enrollment_Records`
-  ADD PRIMARY KEY (`Grade`),
+  ADD PRIMARY KEY (`Grade`, `Student_CWID`, `Section_Num`),
   ADD KEY `Enrollment_CWID` (`Student_CWID`),
   ADD KEY `Enrollment_Num` (`Section_Num`);
 
@@ -307,7 +307,7 @@ ALTER TABLE `Enrollment_Records`
 -- Indexes for table `Prereqs`
 --
 ALTER TABLE `Prereqs`
-  ADD PRIMARY KEY (`Prereq_Course`),
+  ADD PRIMARY KEY (`Prereq_Course`, `Course_Num`),
   ADD KEY `Course_Foreign` (`Course_Num`);
 
 --
@@ -321,14 +321,14 @@ ALTER TABLE `Professor_Interface`
 -- Indexes for table `College_Degree`
 --
 ALTER TABLE `College_Degree`
-  ADD PRIMARY KEY (`Degree`),
+  ADD PRIMARY KEY (`Degree`, `Prof_SSN`),
   ADD UNIQUE KEY `SSN` (`Prof_SSN`);
 
 --
 -- Indexes for table `Section`
 --
 ALTER TABLE `Section`
-  ADD PRIMARY KEY (`Section_Num`),
+  ADD PRIMARY KEY (`Section_Num`, `Course_Num`),
   ADD KEY `Course_Num_Foreign` (`Course_Num`),
   ADD KEY `Section_Prof_Ssn_Num` (`Prof_SSN`);
 
@@ -336,14 +336,14 @@ ALTER TABLE `Section`
 -- Indexes for table `Student_Interface`
 --
 ALTER TABLE `Student_Interface`
-  ADD PRIMARY KEY (`Student_CWID`)
+  ADD PRIMARY KEY (`Student_CWID`),
   ADD KEY `Dept_Name` (`Major`);
   
 --
 -- Indexes for table `Minor`
 --
 ALTER TABLE `Minor`
-  ADD PRIMARY KEY (`Minor_Dept`)
+  ADD PRIMARY KEY (`Minor_Dept`),
   ADD KEY `Minor_CWID` (`Student_CWID`);
 
 -- --------------------------------------------------------
@@ -393,7 +393,7 @@ ALTER TABLE `Section`
 --
 -- Constraints for table `Student`
 --
-ALTER TABLE `Student`
+ALTER TABLE `Student_Interface`
   ADD CONSTRAINT `Dept_Major_Foreign` FOREIGN KEY (`Major`) REFERENCES `Department` (`Depart_Number`);
 
 --
