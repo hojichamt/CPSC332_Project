@@ -55,7 +55,7 @@ INSERT INTO `Course` (`Course_Num`, `Course_Title`, `Textbook`, `Units`, `Depart
 
 CREATE TABLE `Department` (
   `Depart_Number` int(1) NOT NULL,
-  `Depart_Name` text NOT NULL,
+  `Depart_Name` varchar(100) NOT NULL,
   `Telephone` varchar(10) NOT NULL,
   `Location_Office` varchar(500) NOT NULL,
   `Chair_Person` int(9) NOT NULL
@@ -179,7 +179,7 @@ INSERT INTO `Professor_Interface` (`Prof_SSN`, `Prof_Name`, `Street_Address`, `C
 --
 
 CREATE TABLE `College_Degree` (
-  `Degree` text NOT NULL,
+  `Degree` varchar(50) NOT NULL,
   `Prof_SSN` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -233,7 +233,7 @@ CREATE TABLE `Student_Interface` (
   `Last_Name` text NOT NULL,
   `Address` text NOT NULL,
   `Telephone` varchar(10) NOT NULL,
-  `Major` text NOT NULL
+  `Major` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -343,7 +343,7 @@ ALTER TABLE `Student_Interface`
 -- Indexes for table `Minor`
 --
 ALTER TABLE `Minor`
-  ADD PRIMARY KEY (`Minor_Dept`),
+  ADD PRIMARY KEY (`Minor_Dept`, `Student_CWID`),
   ADD KEY `Minor_CWID` (`Student_CWID`);
 
 -- --------------------------------------------------------
