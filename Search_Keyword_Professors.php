@@ -41,7 +41,18 @@ WHERE Section.Prof_SSN LIKE '%".$keywordfromform_Prof_SSN."%' ";
 
 $result = $mysqli->query($sql);
 
-if ($result->num_rows > 0) {
+if ($keywordfromform_Prof_SSN == NULL) {
+  while($row = $result->fetch_assoc()){
+  echo "<table border='1'>
+  <tr>
+  <th>CWID</th>
+  </tr>";
+  echo "<tr>";
+  echo "<td>" . $row['Prof_SSN'] . "</td>";
+      echo "</tr>";
+  }
+
+  }else if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
 echo "<table border='1'>
@@ -66,9 +77,7 @@ echo "<tr>";
   echo "</tr>";
 
   }
-} else {
-  echo "0 results";
-}
+} 
 
 ?>
 
