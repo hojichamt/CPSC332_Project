@@ -36,23 +36,24 @@ INNER JOIN Student_Interface ON Student_Interface.Student_CWID = Enrollment_Reco
 INNER JOIN Course ON Course.Course_Num = Enrollment_Records.Section_Num
 WHERE Student_Interface.Student_CWID LIKE '%".$keywordfromform_Student_CWID."%' ";
 
+$sql2 = "SELECT Student_CWID
+FROM Student_Interface
+WHERE Student_CWID LIKE '%".$keywordfromform_Student_CWID."%' ";
 
 $result = $mysqli->query($sql);
+$result2 = $mysqli->query($sql2);
 
 if ($keywordfromform_Student_CWID == NULL) {
-  while($row = $result->fetch_assoc()){
-  echo "<table border='1'>
-  <tr>
-  <th>CWID</th>
-  </tr>";
-  echo "<tr>";
-  echo "<td>" . $row['Student_CWID'] . "</td>";
-      echo "</tr>";
+  while($row2 = $result2->fetch_assoc()){
+
+    echo "<tr> [] <td>". $row2['Student_CWID'] . "</tr>   </td>";
   }
 
   }else if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
+    
+    
    //echo "id: " . $row["Student_CWID"]. " - Student ID: " . $row["First_Name"]. " " . $row["Last_Name"]. "<br>";
    echo "<table border='1'>
 
@@ -72,7 +73,12 @@ if ($keywordfromform_Student_CWID == NULL) {
       echo "<td>" . $row['Course_Title'] . "</td>";
       echo "<td>" . $row['Grade'] . "</td>";
       echo "</tr>";
-  
+     
   }
+      
+
+      
+  
+  
 } 
 ?>

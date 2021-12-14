@@ -23,9 +23,6 @@
   <li class="nav-item">
     <a class="nav-Professor" href="http://localhost:8888/index3.php">Professor</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="http://localhost:8888/index2.php">Courses</a>
-  </li>
 </ul>
 
 <?php

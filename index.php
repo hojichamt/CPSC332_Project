@@ -23,9 +23,6 @@
   <li class="nav-item">
     <a class="nav-Professor" href="http://localhost:8888/index3.php">Professor</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="http://localhost:8888/index2.php">Courses</a>
-  </li>
 </ul>
 
 <?php
@@ -41,13 +38,12 @@ include "Connect.php";
 
 
 ?>
-<form class="form-horizontal" action = "Search_Student_ID.php"  >
-<form class="form-horizontal" action = "Search_Keyword_Course.php">
-
-<fieldset>
 
 <!-- Student Search -->
 <legend>Search For Student</legend>
+
+<form class="form-horizontal" action = "Search_Student_ID.php"  > 
+<fieldset>
 
 <!-- Search input-->
 <div class="form-group">
@@ -62,14 +58,15 @@ include "Connect.php";
 <div class="form-group">
   <label class="col-md-4 control-label" for="keyword_Student_CWID"></label>
   <div class="col-md-4">
-    <button id="keyword_Student_CWID" name="keyword_Student_CWID" class="btn btn-primary">Search</button>
+    <button id="Search" name="Search" class="btn btn-primary">Search</button>
   </div>
 </div>
 </fieldset>
-
+</form>
 
 <!------------------------------------------------------------------------------------------------->
 
+<form class="form-horizontal" action = "Search_Keyword_Course.php"> 
 
   
 <fieldset>
@@ -90,12 +87,12 @@ include "Connect.php";
 <div class="form-group">
   <label class="col-md-4 control-label" for="keyword_Course_Num"></label>
   <div class="col-md-4">
-    <button id="keyword_Course_Num" name="keyword_Course_Num" class="btn btn-primary">Search</button>
+    <button id="Search" name="Search" class="btn btn-primary">Search</button>
   </div>
 </div>
-
 </fieldset>
 </form>
+
 <?php
 
 

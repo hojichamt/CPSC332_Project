@@ -24,8 +24,8 @@ border-width:5px;
 
 include "Connect.php";
 
-$keywordfromform_Prof_SSN= $_GET["keyword_Prof_SSN"];
-echo "Searching For: ". $keywordfromform_Prof_SSN;
+$keywordfromform_Prof_Grades= $_GET["keyword_Prof_Grades"];
+echo "Searching For: ". $keywordfromform_Prof_Grades;
 
  
 //Search database for 88
@@ -33,19 +33,12 @@ echo "<h2> Professor Information </h2>";
 
 
 
-$sql = "SELECT Section.Prof_SSN, Professor_Interface.Prof_Name, Professor_Interface.Title, 
-Section.Classroom, Section.Meeting_Days, Section.Beginning_Time, Section.Ending_Time 
+$sql = "SELECT Section.Course_Num, Enrollment_Records.Grades, COUNT(grade) AS grade_count
 FROM Section 
-INNER JOIN Professor_Interface 
-ON Section.Prof_SSN = Professor_Interface.Prof_SSN 
-WHERE Section.Prof_SSN LIKE '%".$keywordfromform_Prof_SSN."%' ";
-
-$sql2 = "SELECT Prof_SSN
-FROM Professor_Interface
-WHERE Prof_SSN LIKE '%".$keywordfromform_Prof_SSN."%' ";
+INNER JOIN Enrollment_Records ON Section.Section_Num = Enrollment_Records.Section_Num
+WHERE Enrollment_Records.Student_CWID LIKE '%".$keywordfromform_Prof_Grades."%' ";
 
 $result = $mysqli->query($sql);
-$result2 = $mysqli->query($sql2);
 
 if ($keywordfromform_Prof_SSN == NULL) {
   while($row2 = $result2->fetch_assoc()){
@@ -59,10 +52,10 @@ if ($keywordfromform_Prof_SSN == NULL) {
 echo "<table border='1'>
 
 <tr>
-<th>SSN</th>
-<th>Title</th>
-<th>Name</th>
-<th>Classroom</th>
+<th>A+</th>
+<th>A</th>
+<th>B+</th>
+<th>B</th>
 <th>Meeting Days</th>
 <th>Beginning Time</th>
 <th>Ending Time</th>

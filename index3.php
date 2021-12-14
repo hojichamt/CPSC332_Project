@@ -23,9 +23,6 @@
   <li class="nav-item">
     <a class="nav-Professor" href="http://localhost:8888/index3.php">Professor</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="http://localhost:8888/index2.php">Courses</a>
-  </li>
 </ul>
 
 <?php
@@ -42,6 +39,7 @@ include "Connect.php";
 
 ?>
 <form class="form-horizontal" action = "Search_Keyword_Professors.php"  >
+
 <fieldset>
 
 <!-- Course Search -->
@@ -55,6 +53,31 @@ include "Connect.php";
   <label class="col-md-4 control-label" for="keyword_Prof_SSN">Search</label>
   <div class="col-md-5">
     <input id="keyword_Prof_SSN" name="keyword_Prof_SSN" type="search" placeholder="e.g. 000000000 - 9 DIGIT SSN" class="form-control input-md">
+    <p class="help-block">Press search to see all Professors.</p>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Search"></label>
+  <div class="col-md-4">
+    <button id="Search" name="Search" class="btn btn-primary">Search</button>
+  </div>
+</div>
+</fieldset>
+</form>
+<!------------------------------------------------------------------------------------------------------------------->
+<form class="form-horizontal" action = "Search_Grade_Course.php">
+<fieldset>
+
+<!-- Course Search -->
+<legend>Search For Grades</legend>
+
+<!-- Search input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="keyword_Prof_Grades">Search</label>
+  <div class="col-md-5">
+    <input id="keyword_Prof_Grades" name="keyword_Prof_Grades" type="search" placeholder="e.g. CPSC332" class="form-control input-md">
     <p class="help-block">Press search to see all Professors.</p>
   </div>
 </div>
