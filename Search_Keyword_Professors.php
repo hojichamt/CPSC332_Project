@@ -29,7 +29,7 @@ echo "Searching For: ". $keywordfromform_Prof_SSN;
 
  
 //Search database for 88
-echo "<h2> Professor Information </h2>";
+
 
 
 
@@ -38,7 +38,7 @@ Section.Classroom, Section.Meeting_Days, Section.Beginning_Time, Section.Ending_
 FROM Section 
 INNER JOIN Professor_Interface 
 ON Section.Prof_SSN = Professor_Interface.Prof_SSN 
-WHERE Section.Prof_SSN LIKE '%".$keywordfromform_Prof_SSN."%' ";
+WHERE Section.Prof_SSN LIKE '%".$keywordfromform_Prof_SSN."%' ";;
 
 $sql2 = "SELECT Prof_SSN
 FROM Professor_Interface
@@ -48,17 +48,16 @@ $result = $mysqli->query($sql);
 $result2 = $mysqli->query($sql2);
 
 if ($keywordfromform_Prof_SSN == NULL) {
-  while($row2 = $result2->fetch_assoc()){
+  
 
-    echo "<tr> [] <td>". $row2['Prof_SSN'] . "</tr>   </td>";
-  }
+    echo "<h2> Please Enter an SSN</h2>";
+  
 
   }else if ($result->num_rows > 0) {
+  echo "<h2> Professor Information for </h2>";
   // output data of each row
-  while($row = $result->fetch_assoc()) {
-echo "<table border='1'>
-
-<tr>
+  echo "<table border='1'>
+ <tr>
 <th>SSN</th>
 <th>Title</th>
 <th>Name</th>
@@ -67,6 +66,10 @@ echo "<table border='1'>
 <th>Beginning Time</th>
 <th>Ending Time</th>
 </tr>";
+
+  while($row = $result->fetch_assoc()) {
+
+
 echo "<tr>";
   echo "<td>" . $row['Prof_SSN'] . "</td>";
   echo "<td>" . $row['Title'] . "</td>";
@@ -79,6 +82,9 @@ echo "<tr>";
 
   }
 } 
+else{
+  echo "<h2>Cannot find SSN </h2>";
+}
 
 ?>
 

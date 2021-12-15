@@ -30,13 +30,6 @@
 include "Connect.php";
 
 
-//include "Search_Keyword_Course.php";
-
-//include "Search_Keyword.php";
-
-//include "Search_Quar.php";
-
-
 ?>
 
 <!-- Student Search -->
@@ -66,7 +59,7 @@ include "Connect.php";
 
 <!------------------------------------------------------------------------------------------------->
 
-<form class="form-horizontal" action = "Search_Keyword_Course.php"> 
+<form class="form-horizontal" action = "Search_Student_Course.php"> 
 
   
 <fieldset>

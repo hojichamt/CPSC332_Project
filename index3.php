@@ -67,7 +67,7 @@ include "Connect.php";
 </fieldset>
 </form>
 <!------------------------------------------------------------------------------------------------------------------->
-<form class="form-horizontal" action = "Search_Grade_Course.php">
+<form class="form-horizontal" action = "Search_Grade_Course_Professors.php">
 <fieldset>
 
 <!-- Course Search -->
@@ -75,10 +75,18 @@ include "Connect.php";
 
 <!-- Search input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="keyword_Prof_Grades">Search</label>
+  <label class="col-md-4 control-label" for="keyword_Prof_Grades">Course</label>
   <div class="col-md-5">
     <input id="keyword_Prof_Grades" name="keyword_Prof_Grades" type="search" placeholder="e.g. CPSC332" class="form-control input-md">
-    <p class="help-block">Press search to see all Professors.</p>
+    <p class="help-block">Press search to see all Course.</p>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="keyword_Section_Num">Section</label>
+  <div class="col-md-5">
+    <input id="keyword_Section_Num" name="keyword_Section_Num" type="search" placeholder="e.g. 22" class="form-control input-md">
+    <p class="help-block">Press search to see all Section.</p>
   </div>
 </div>
 
